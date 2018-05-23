@@ -1,5 +1,9 @@
 body{
     background-color: rgb(197, 152, 84);
+    background-image: url("/Users/bagonterman/bootcamp/week-3/Word-Guess-Game/assets/images/Background.png");
+    background-repeat: no-repeat;
+    background-size: 90%;
+    
 }
 .getStarted{
     text-align: center;
@@ -45,7 +49,8 @@ div.wrapper.word{
       /* grid-template-columns: 100%; */
       /* padding: .2%; */
       grid-gap: .7%;
-      margin-left:7%;
+      margin-left:16%;
+      margin-right:16%;
       /* margin-right:7%; */
       /* margin-top:475px;////use */
       margin-top:475px;
@@ -55,8 +60,11 @@ div.wrapper.word{
 .wrapper.userLogs{
     display: grid;
     grid-template-columns: repeat(3, 2fr);
-    color:rgb(37, 25, 8);
+    /* color:rgb(37, 25, 8); */
+    color:rgb(243, 240, 235);
     margin: auto;
+    margin-left:16%;
+    margin-right:22%;
     margin-top:600px;
     height: 80px;
     font-family: 'Tajawal', sans-serif;
@@ -93,13 +101,15 @@ img {
     grid-template-columns: repeat(18, 1fr);
     padding: .3%;
     grid-gap: 6%;
-    margin-left:6.7%;
+    margin-left:15%;
+    margin-right:15%;
     /* display: inline-block; */
     width: 360px;
     /* margin-right:20%; */
     /* margin-top:-42px; */
     position: absolute;
-    text-align: center;
+    /* text-align: center; */
+    text-align: left;
     /* align-self: center; */
     /* align-items: center; */
     /* margin: auto;
