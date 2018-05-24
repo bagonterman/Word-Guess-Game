@@ -1,6 +1,6 @@
 body{
     background-color: rgb(197, 152, 84);
-    background-image: url("/Users/bagonterman/bootcamp/week-3/Word-Guess-Game/assets/images/Background.png");
+    background-image: url("./assets/images/Background.png");
     background-repeat: no-repeat;
     background-size: 90%;
     
@@ -135,4 +135,32 @@ img {
     -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
     -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
     transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  } */
+
+
+/* @keyframes flickerAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-o-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-moz-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-webkit-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  .animate-flicker {
+     -webkit-animation: flickerAnimation .5s infinite;
+     -moz-animation: flickerAnimation .5s infinite;
+     -o-animation: flickerAnimation .5s infinite;
+      animation: flickerAnimation .5s infinite;
   } */
