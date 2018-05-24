@@ -114,6 +114,9 @@
 
         </div>
         <script>
+                peew= new Audio();
+                peew.src="./assets/sounds/Shot.mp3";
+                
             var timeoutID;
             delayedAlert();////make the words press any key disappear after 3 seconds.
         function delayedAlert() {
@@ -227,6 +230,8 @@ function resetBlocks(clss) {
             var clickCount=0;
             var matched=0;
             var lettersDone=[];
+            // var mySound;
+            // mySound = new sound("./assets/sounds/Rooster_Crowing.mp3");
         document.onkeyup=function(event){
             var userGuess=event.key.toUpperCase();
             clickCount++;
@@ -251,8 +256,7 @@ function resetBlocks(clss) {
                     var letterMatch=words[random][i].toUpperCase();
                     
                     if(userGuess===letterMatch){
-                        
-                        
+                        peew.play();
                         matched++;
                         var upDown=letter%2;
                         myMove("woodImg"+letter,upDown);
