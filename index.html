@@ -108,9 +108,7 @@
             <p class="remainingG">
                 Number of guesses remaining: 20
             </p>
-            <p class="alreadyG">
-                Letters already guessed: 
-            </p>
+            <p class="alreadyG">Letters already guessed: </p>
             <p class="wins">Wins: 0</p>
             <p class="losses">Losses: 0</p>
 
@@ -167,7 +165,7 @@ function resetBlocks(clss) {
         //  var curTop = elem.style.top;
         // if(curTop){
             elem.style.top = -1 + 'px'
-            console.log(elem);
+            // console.log(elem);
             // }
         ////////////////////////////
         // second try at this sucker////
@@ -185,7 +183,7 @@ function resetBlocks(clss) {
 
         resetBoxes();
         function resetBoxes(){
-            words=["Ace-High","Acquisitive","High-Falutin","Happifying","Hell Rousers","Hornswoggle","Hobble your lip","Harum-Scarum","Caboodle","Saddle Tramp","Vamoose","Catawampous","Clodhopper","Varmint","Corned","Cottonwood Blossom","Whistle Berries","Cow Grease","Yellow Belly","Woolsey","Whomper-jawed"];
+            words=["Ace-High","Acquisitive","High-Falutin","Happifying","Hell Rousers","Hornswoggle","Harum-Scarum","Caboodle","Saddle Tramp","Vamoose","Catawampous","Clodhopper","Varmint","Corned","Cottonwood Blossom","Whistle Berries","Cow Grease","Yellow Belly","Woolsey","Whomper-jawed"];
              random=Math.floor(Math.random() * words.length);
 
             for(i=0;i<18;i++){
@@ -228,23 +226,33 @@ function resetBlocks(clss) {
             var guessesR=20;
             var clickCount=0;
             var matched=0;
+            var lettersDone=[];
         document.onkeyup=function(event){
             var userGuess=event.key.toUpperCase();
             clickCount++;
             guessesR--;
             var iWin=false;
-            
-            if(guessesR>0){
+            var usedLetters=lettersDone.push(userGuess);
+            var alreadyGarray=$(".alreadyG").text().slice(24);
+            alreadyGarray=alreadyGarray.split(",");
+            found = alreadyGarray.find(function(element) {
+                        return element==userGuess;
+                        });
+            if(guessesR>0&&typeof found === "undefined"){
                     $(".guesses").text("Guesses: "+clickCount);
                     $(".remainingG").text("Number of guesses remaining: "+guessesR);
-                    $(".alreadyG").append(userGuess);
+                    $(".alreadyG").append(userGuess+",");
+                    
                 for(i=0;i<words[random].length;i++){
-                    letter=Number([i])+1;
+                    var letter=Number([i])+1;
                     // bigLetter=words[random][[i]];
                     //alert(letter);
                     // imgWood=document.getElementsByClassName("woodImg"+letter)[0].innerHTML;
                     var letterMatch=words[random][i].toUpperCase();
+                    
                     if(userGuess===letterMatch){
+                        
+                        
                         matched++;
                         var upDown=letter%2;
                         myMove("woodImg"+letter,upDown);
@@ -263,11 +271,12 @@ function resetBlocks(clss) {
                         }
                     }
                 }
+                    
                         if(iWin==true){
                             resetBoxes();
                         }
             }
-            else{
+            else if(guessesR==0){
                     $(".guesses").text("Guesses: 0");
                     $(".remainingG").text("Number of guesses remaining: 20");
                     $(".alreadyG").text("Letters already guessed: ");
@@ -279,6 +288,10 @@ function resetBlocks(clss) {
                     clickCount=0;
                     matched=0;
             }
+            else{
+                alert("Please type a different letter.")
+            }
+
         }
         </script>
 </body>
