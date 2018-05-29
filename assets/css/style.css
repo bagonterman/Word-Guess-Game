@@ -130,6 +130,10 @@ img {
 
   /* //////////Media breaks/////////////// */
   @media screen and (max-width: 641px) {
+      input.mobileText{
+          margin-left:40%;
+          /* visibility:hidden; */
+      }
     body{
         background-color: rgb(197, 152, 84);
         background-image: url("../images/Background.png");
@@ -224,6 +228,43 @@ img {
 
 /* @media screen and (max-width: 980px) and (min-width: 768px){ */
     @media screen and (max-width: 979px) and (min-width: 642px){
+        input.mobileText{
+            margin-left:40%;
+            visibility:hidden;
+        }
+        body{
+            background-color: rgb(197, 152, 84);
+            background-image: url("../images/Background.png");
+            background-repeat: no-repeat;
+            background-size: 50%;
+            background-position-x: center;
+
+        }
+       
+            .wrapper.woodBlocks{
+
+                  block-size: 40%;
+                  margin-top:300px;
+                  margin-left:34%;
+
+            
+            }
+            .wrapper.userLogs{
+                /* margin-top:580px; */
+                position: absolute;
+                margin-top:70%;
+                margin-bottom:-20%;
+                margin-left:25%;
+
+            }
+          
+    
+            .wrapper.enjoy-css {
+                margin-top:320px;
+                margin-left:33%;
+
+              }    
+                
 
     }
     
@@ -231,7 +272,39 @@ img {
 
     
     @media screen and (min-width: 980px){
-           
+        input.mobileText{
+            margin-left:40%;
+            visibility:hidden;
+        }
+        body{
+            background-color: rgb(197, 152, 84);
+            background-image: url("../images/Background.png");
+            background-repeat: no-repeat;
+            background-size: 50%;
+            background-position-x: center;
+
+        }
+       
+            .wrapper.woodBlocks{
+
+                  block-size: 40%;
+                  margin-top:430px;
+                  margin-left:34%;
+
+            
+            }
+            .wrapper.userLogs{
+                margin-top:630px;
+                margin-left:25%;
+
+            }
+          
+    
+            .wrapper.enjoy-css {
+                margin-top:450px;
+                margin-left:33%;
+
+              }    
                 
         }  
   /* //////////////////////////////////////// */
