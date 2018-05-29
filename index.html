@@ -108,7 +108,7 @@
             <p class="remainingG">
                 Number of guesses remaining: 20
             </p>
-            <p class="alreadyG">Letters already guessed: </p>
+            <p class="alreadyG">Letters already guessed: <span id="already-used"></span></p>
             <p class="wins">Wins: 0</p>
             <p class="losses">Losses: 0</p>
 
@@ -127,6 +127,24 @@
             started.textContent="";
         }
         /////animation script///////////
+    function youWin(){
+        alert("you win!");
+                $(".guesses").text("Guesses: 0");
+                $(".remainingG").text("Number of guesses remaining: 20");
+                //$(".alreadyG").text("Letters already guessed: ");
+                $("#already-used").html("");
+                var winner=$(".wins").text().toString().slice(-1);
+                winner=Number(winner)+1;
+                $(".wins").text("Wins: "+winner);
+                iWin=true;
+                guessesR=20;
+                clickCount=0;
+                matched=0;
+                resetBoxes();  ///reset all of the blocks////
+                lettersDone=[];
+
+
+    }
 
     function myMove(clss,down) {
         var elem = document.getElementsByClassName(clss)[0]; 
@@ -137,16 +155,21 @@
         upDown!=0?(movement=-55,upOrDown=pos--):(movement=55,upOrDown=pos++);
         if (upOrDown == movement) {
         clearInterval(id);
+        if(guessesR>0&&matched===Number(words[random].length)){
+               return youWin();
+            }
         } else {
         // pos--; 
         elem.style.position ='relative';
-        elem.style.top = upOrDown + 'px';  
+        elem.style.top = upOrDown + 'px'; 
+         
             }
         }
+       
     }
 /////////////////////Reset the blocks/////////////////////
 function resetBlocks(clss) {
-    //alert(clss+"  "+down)
+    // console.log(clss);
         var elem = document.getElementsByClassName(clss)[0]; 
         var pos = 0;
     // var id = setInterval(function(){ frame(down) }, 10);
@@ -186,7 +209,9 @@ function resetBlocks(clss) {
 
         resetBoxes();
         function resetBoxes(){
-            words=["Ace-High","Acquisitive","High-Falutin","Happifying","Hell Rousers","Hornswoggle","Harum-Scarum","Caboodle","Saddle Tramp","Vamoose","Catawampous","Clodhopper","Varmint","Corned","Cottonwood Blossom","Whistle Berries","Cow Grease","Yellow Belly","Woolsey","Whomper-jawed"];
+            //words=["Ace-High","Acquisitive","High-Falutin","Happifying","Hell Rousers","Hornswoggle","Harum-Scarum","Caboodle","Saddle Tramp","Vamoose","Catawampous","Clodhopper","Varmint","Corned","Cottonwood Blossom","Whistle Berries","Cow Grease","Yellow Belly","Woolsey","Whomper-jawed"];
+            //words=["Ace-High"];
+            words=["farts"];
              random=Math.floor(Math.random() * words.length);
 
             for(i=0;i<18;i++){
@@ -229,7 +254,9 @@ function resetBlocks(clss) {
             var guessesR=20;
             var clickCount=0;
             var matched=0;
+            //var matched=1;
             var lettersDone=[];
+            var lettersCorrect = [];
             // var mySound;
             // mySound = new sound("./assets/sounds/Rooster_Crowing.mp3");
         document.onkeyup=function(event){
@@ -237,67 +264,56 @@ function resetBlocks(clss) {
             clickCount++;
             guessesR--;
             var iWin=false;
-            var usedLetters=lettersDone.push(userGuess);
-            var alreadyGarray=$(".alreadyG").text().slice(24);
+            lettersDone.push(userGuess);
+            var alreadyGarray=$(".alreadyG").text().slice(25);
             alreadyGarray=alreadyGarray.split(",");
+            //console.log(lettersDone);
+            //console.log(alreadyGarray);
             found = alreadyGarray.find(function(element) {
                         return element==userGuess;
                         });
-            if(guessesR>0&&typeof found === "undefined"){
+
+                if(guessesR>0&&found!=userGuess){
                     $(".guesses").text("Guesses: "+clickCount);
                     $(".remainingG").text("Number of guesses remaining: "+guessesR);
-                    $(".alreadyG").append(userGuess+",");
+                    console.log(lettersDone);
+                    //var poo=["J"];
+                    $("#already-used").html(lettersDone.join(","));
+                    //$("#already-used").html(poo.join(","));
                     
-                for(i=0;i<words[random].length;i++){
-                    var letter=Number([i])+1;
-                    // bigLetter=words[random][[i]];
-                    //alert(letter);
-                    // imgWood=document.getElementsByClassName("woodImg"+letter)[0].innerHTML;
-                    var letterMatch=words[random][i].toUpperCase();
-                    
+            for(i=0;i<words[random].length;i++){
+                var letter=Number([i])+1;
+                var letterMatch=words[random][i].toUpperCase();
                     if(userGuess===letterMatch){
-                        peew.play();
-                        matched++;
-                        var upDown=letter%2;
-                        myMove("woodImg"+letter,upDown);
-                        if(guessesR>0&&matched==words[random].length){
-                            $(".guesses").text("Guesses: 0");
-                            $(".remainingG").text("Number of guesses remaining: 20");
-                            $(".alreadyG").text("Letters already guessed: ");
-                            var winner=$(".wins").text().toString().slice(-1);
-                            winner=Number(winner)+1;
-                            $(".wins").text("Wins: "+winner);
-                            iWin=true;
-                            guessesR=20;
-                            clickCount=0;
-                            matched=0;
-                            // document.getElementsByTagName("body")[0].setAttribute("class", "animate-flicker");
-                               
-                        }
-                    }
-                }
+                    peew.play();
+                    matched++;
+                    var upDown=letter%2;
+                    myMove("woodImg"+letter,upDown); 
                     
-                        if(iWin==true){
-                            resetBoxes();
-                        }
-            }
-            else if(guessesR==0){
-                    $(".guesses").text("Guesses: 0");
-                    $(".remainingG").text("Number of guesses remaining: 20");
-                    $(".alreadyG").text("Letters already guessed: ");
-                    var myLosses=$(".losses").text().toString().slice(-1);
-                    myLosses=Number(myLosses)+1;
-                    $(".losses").text("Losses: "+myLosses);
-                    resetBoxes();
-                    guessesR=20;
-                    clickCount=0;
-                    matched=0;
-            }
-            else{
-                alert("Please type a different letter.")
-            }
+                }
+            }////end of for loop
 
-        }
+           
+        }///end if
+          else if(guessesR===0){
+                        alert("You Lose.")
+                        $(".guesses").text("Guesses: 0");
+                        $(".remainingG").text("Number of guesses remaining: 20");
+                        //$(".alreadyG").text("Letters already guessed: ");
+                        var myLosses=$(".losses").text().toString().slice(-1);
+                        myLosses=Number(myLosses)+1;
+                        $(".losses").text("Losses: "+myLosses);
+                        resetBoxes();
+                        guessesR=20;
+                        clickCount=0;
+                        matched=0;
+                        $("#already-used").html("");
+                        lettersDone=[];
+                }
+                else{
+                    alert("please pick a different letter.")
+                }
+    }////end of click
         </script>
 </body>
 </html>
