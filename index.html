@@ -152,7 +152,7 @@
     var id = setInterval(function(){ frame(down) }, 10);
     function frame(upDown) {
         var movement, upOrDown;
-        upDown!=0?(movement=-55,upOrDown=pos--):(movement=55,upOrDown=pos++);
+        upDown!=0?(movement=-65,upOrDown=pos--):(movement=55,upOrDown=pos++);
         if (upOrDown == movement) {
         clearInterval(id);
         if(guessesR>0&&matched===Number(words[random].length)){
