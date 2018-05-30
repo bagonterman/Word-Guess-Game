@@ -129,7 +129,41 @@ img {
   }
 
   /* //////////Media breaks/////////////// */
-  @media screen and (max-width: 641px) {
+  @media screen and (max-width: 499px){
+    input.mobileText{
+        margin-left:40%;
+        margin-top:3%;
+        /* visibility:hidden; */
+    }
+  body{
+      background-color: rgb(197, 152, 84);
+      background-image: url("../images/Background.png");
+      /* background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.6) ),url("../images/Background.png"); */
+      background-repeat: no-repeat;
+      background-size: 70%;
+      background-position-x: center;
+      /* margin-left: 40px; */
+  }
+      div.wrapper.word{
+          margin-top: 360px;
+      }
+
+      .wrapper.woodBlocks{
+            block-size: 30%;
+            margin-top:235px;
+            margin-left:10%;
+      }
+      .wrapper.userLogs{
+          margin-top:370px;
+      }
+
+
+      .wrapper.enjoy-css {
+          margin-top:258px;
+          margin-left:10%;
+        }
+  }
+  @media screen and (max-width: 641px) and (min-width: 500px) {
       input.mobileText{
           margin-left:40%;
           /* visibility:hidden; */
