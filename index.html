@@ -265,6 +265,10 @@ function resetBlocks(clss) {
             // mySound = new sound("./assets/sounds/Rooster_Crowing.mp3");
         document.onkeyup=function(event){
             var userGuess=event.key.toUpperCase();
+            isAletter=userGuess.match(/^[a-zA-Z._-]+$/);
+            if(isAletter&&userGuess.length<2){
+                
+                
             clickCount++;
             guessesR--;
             var iWin=false;
@@ -317,6 +321,10 @@ function resetBlocks(clss) {
                 else{
                     alert("please pick a different letter.")
                 }
+            }
+        else{
+            alert("Please pick a letter");
+        }
     }////end of click
     
         </script>
